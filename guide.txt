@@ -1,9 +1,11 @@
 
-io_mesh_urho v0.6
+io_mesh_atomic v0.6 ( from io_mesh_urho v0.6 )
 
-This is a Blender addon that helps you exporting your meshes, armatures, animations and materials to Urho3D.
-It is an amateur work, done with little knowledge of Urho3D and Blender, but I hope it helps.
-Public domain license. Maintained by reattiva (you can contact me @gmail.com).
+This is a Blender addon that helps you exporting your meshes, armatures, animations and materials 
+to the Atomic Game Engine (which was forked from Urho3D).
+It is an amateur work, done with little knowledge of the Atomic Game Engine, Urho3D and Blender, but I hope it helps.
+Public domain license CC0. The Urho3D version is maintained by reattiva (contact  @gmail.com). The 
+Atomic Game Engine version is "maintained" by JimMarlowe.
 
  Installation from releases
 ----------------------------
@@ -14,13 +16,13 @@ Public domain license. Maintained by reattiva (you can contact me @gmail.com).
 -------------------------------
 - download the zip file from GitHub repository main page using the button "Download ZIP";
 - unzip it;
-- select the folder 'io_mesh_urho' and re-create a zip file (you need the folder 'io_mesh_urho' in the zip file);
+- select the folder 'io_mesh_atomic' and re-create a zip file (you need the folder 'io_mesh_atomic' in the zip file);
 + open Blender;
 - open 'user preferences' (Ctrl+Alt+U);
 - click 'Addons' on the top bar;
 - click 'Install from file...' on the bottom bar;
 - select the zip file;
-- now search in the list, you should see a greyed line named 'Import-Export: Urho3D export';
+- now search in the list, you should see a greyed line named 'Import-Export: Atomic export';
 - click on the checkbox on the right to enable the addon (see below if you can't set the check);
 - optional: click 'Save User Settings' to remember this addon as enabled.
 
@@ -34,7 +36,7 @@ of Blender, select 'Toggle System Console' to see the error, copy and email it t
 The exporter is located in:
 - Properties panel, by default it is the panel in the right bottom corner, its icon is an horizontal scrollbar
 - Render page (camera icon, it is the first icon in the panel)
-- Scroll down to 'Urho export'
+- Scroll down to 'Atomic export'
 
 ================
  Exporter panel
@@ -53,9 +55,9 @@ the folder.
 - 'Files overwrite'
 By default existing files are not overwritten by the exporter, this option enables overwriting files.
 - 'Use subfolders'
-This option allows to set custom subfolders, relative to the 'Output folder'. By default Urho3D folder hierarchy
+This option allows to set custom subfolders, relative to the 'Output folder'. By default atomic folder hierarchy
 is replicated, with 'Models' to store meshes, animations and material lists, 'Textures' to store textures,
-'Materials' to store materials, 'Scenes' to store 'scene' prefabs and 'Objects' to store 'node' prefabs.
+'Materials' to store materials, 'Scenes' to store 'scene' prefabs and 'Prefabs' to store 'node' prefabs.
 
 - Blank page icon on the right
 Restore the default options ('factory' settings).
@@ -146,7 +148,7 @@ Export not muted shape keys (Morphs):
 - Export materials
 Export the object materials (see Materials below).
   - Materials text list: in the models folder create a text file with the same name of the model, inside there is
-    the list of the material files exported that are used by the model. This file is used by Urho3D Editor to retrieve the materials.
+    the list of the material files exported that are used by the model. This file is used by atomic Editor to retrieve the materials.
 - Copy textures
 Copy the textures used by the objects materials to the output folder. Sometimes this does not work, especially when
 the images are embedded in the blend file are no format was specified for them.
@@ -201,11 +203,11 @@ use the Value slider (V in HSV) to easy change a greyscale color.
 ===========
  Materials
 ===========
-The exporter will try to generate Urho3D materials that are similar to what you see in Blender, they will not be the
+The exporter will try to generate atomic materials that are similar to what you see in Blender, they will not be the
 exact same but at least you have a starting point.
 This feature works only with the 'Blender Render' engine not Cycles. It will probably need some corrections.
 
-This is how a Blender material setting (on the left) is converted to a Urho3D material parameter (on the right):
+This is how a Blender material setting (on the left) is converted to a atomic material parameter (on the right):
 
 --- Blender Material ---
 Diffuse.Color * Diffuse.Intensity       = MatDiffColor rgb
@@ -240,13 +242,13 @@ Note: AO and LightMap use the coordinates UV2, so the texture slot name will be 
 To define a texture to be exported as a light map you can insert '_AMBIENTLIGHT' or '_LIGHTMAP' in the texture slot 
 name. You need to use a different set of UV coordinates and add '_UV2' at the end of the texture slot name or the
 UV Map name.
-It is simpler to use '_AMBIENTLIGHT' because many techniques are already present in Urho3D, you only need to add 
+It is simpler to use '_AMBIENTLIGHT' because many techniques are already present in atomic, you only need to add 
 a Zone in your scene, its Ambient Color will modulate the light map.
 
 =========
  Prefabs
 =========
-Prefabs allow to export Urho3D 'Scenes' and 'Objects'.
+Prefabs allow to export Atomic 'Scenes' and 'Prefabs'.
 They are the equivalent of AssetImporter's 'node' and 'scene' commands.
 
 --- Individual Prefabs ---
@@ -260,13 +262,13 @@ The xml file is named according to the scene's name.
 Note that this option is not available when 'Merge objects' is enabled.
 
 --- Scene Prefab ---
-Same content as 'One Collective', but outputs a Urho3D xml scene (with Octree, PhysicsWorld, DebugRenderer and Light).
+Same content as 'One Collective', but outputs a atomic xml scene (with Octree, PhysicsWorld, DebugRenderer and Light).
 The xml file is named according to the scene's name.
 
 --- Physics ---
 Select what physics components to create for the prefabs:
   - No physics: do not export physics at all.
-  - Individual: export Urho3D physics components (PhysicsWorld, RigidBodies and CollisionShapes).
+  - Individual: export Atomic physics components (PhysicsWorld, RigidBodies and CollisionShapes).
   - Global: expects a 'Physics.mdl' model as TriangleMesh shape. Useful when using a simplified geometry for the whole scene.
 
 --- CollisionShape ---

@@ -1,7 +1,8 @@
-Urho3D-Blender
-==============
+and Urho3D-Blender and Atomic-Blender
+=====================================
 
 Blender (http://www.blender.org) to Urho3D (https://github.com/urho3d/Urho3D) mesh exporter.
+Blender (http://www.blender.org) to Atomic Game Engine (https://github.com/AtomicGameEngine/AtomicGameEngine) mesh exporter.
 
 Download:
 https://github.com/reattiva/Urho3D-Blender/releases/download/latest/io_mesh_urho.zip
